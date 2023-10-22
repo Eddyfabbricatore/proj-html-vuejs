@@ -29,7 +29,13 @@
       buttonText="Browse through courses"
       illustration="src/assets/img/Graduation-Illustration.png" />
 
-    <Faculties />
+    <Faculties
+      title="Faculties avaible at EduPrime"
+      paragraph="At single university with a load of courses, tailored to satisfy any student's needs"
+      imgSrc="src/assets/img/Gavel-Illustration-e1556884768193.png"
+      secondTitle="Low Faculty"
+      secondParagraph="Learning from world-leading academics practitioners, you'll not only receive an outstanding grounding in the theory of low, but you will be able to undestand how those principles are applied in practice through a range of student-led activities and competitions."
+      buttonText="Read More" />
 
     <UniversityYears />
 

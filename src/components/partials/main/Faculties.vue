@@ -8,6 +8,15 @@
       return{
         faculties
       }
+    },
+
+    props:{
+      title: String,
+      paragraph: String,
+      imgSrc: String,
+      secondTitle: String,
+      secondParagraph: String,
+      buttonText: String
     }
   }
 </script>
@@ -15,9 +24,9 @@
 <template>
   <section class="faculties">
     <div class="text">
-      <h2>Faculties avaible at EduPrime</h2>
+      <h2>{{ title }}</h2>
 
-      <p>At single university with a load of courses, tailored to satisfy any student's needs</p>
+      <p>{{ paragraph }}</p>
     </div>
 
     <div class="row">
@@ -31,15 +40,15 @@
     <div class="content">
       <div class="container">
         <div class="image">
-          <img src="../../../assets/img/Gavel-Illustration-e1556884768193.png" alt="">
+          <img :src="imgSrc" alt="Illustration">
         </div>
 
         <div class="low-faculty">
-          <h3>Low Faculty</h3>
+          <h3>{{ secondTitle }}</h3>
 
-          <p>Learning from world-leading academics practitioners, you'll not only receive an outstanding grounding in the theory of low, but you will be able to undestand how those principles are applied in practice through a range of student-led activities and competitions.</p>
+          <p>{{ secondParagraph }}</p>
 
-          <button class="btn btn-red">Read More</button>
+          <button class="btn btn-red">{{ buttonText }}</button>
         </div>
       </div>
     </div>
