@@ -1,23 +1,26 @@
 <script>
   import faculties from '../../../data/main/faculties';
+  import facultiesInfo from '../../../data/main/facultiesInfo';
 
   export default {
     name: 'Faculties',
 
     data(){
       return{
-        faculties
-      }
-    },
+        faculties,
+        facultiesInfo,
+        title: "Faculties avaible at EduPrime",
+        paragraph: "At single university with a load of courses, tailored to satisfy any student's needs",
+        icon: 'fa-solid fa-sort-down',
+        counter: 1
+        }
+      },
 
-    props:{
-      title: String,
-      paragraph: String,
-      imgSrc: String,
-      secondTitle: String,
-      secondParagraph: String,
-      buttonText: String
-    }
+      methods:{
+        change(i){
+          this.counter = i;
+        }
+      }
   }
 </script>
 
@@ -30,25 +33,36 @@
     </div>
 
     <div class="row">
-      <div class="col" v-for="(item, index) in faculties" :key="index">
+      <div
+        class="col"
+        :class="{'active' : index === counter}"
+        v-for="(item, index) in faculties"
+        :key="index"
+        @click="change(index)">
         <img :src="item.imgSrc" :alt="item.text">
 
         <span>{{ item.text }}</span>
+
+        <i :class="icon"></i>
       </div>
     </div>
 
-    <div class="content">
+    <div
+      class="content"
+      :class="{'visible' : index === counter - 1}"
+      v-for="(illustration, index) in facultiesInfo"
+      :key="index">
       <div class="container">
         <div class="image">
-          <img :src="imgSrc" alt="Illustration">
+          <img :src="illustration.imgSrc" alt="Illustration">
         </div>
 
         <div class="low-faculty">
-          <h3>{{ secondTitle }}</h3>
+          <h3>{{ illustration.title }}</h3>
 
-          <p>{{ secondParagraph }}</p>
+          <p>{{ illustration.paragraph }}</p>
 
-          <button class="btn btn-red">{{ buttonText }}</button>
+          <button class="btn btn-red">{{ illustration.buttonText }}</button>
         </div>
       </div>
     </div>
@@ -84,6 +98,7 @@
       margin-bottom: 50px;
 
       .col{
+        position: relative;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -92,6 +107,7 @@
         height: 208px;
         border: 1px solid #eaeaea;
         padding: 30px 40px;
+        cursor: pointer;
         color: $bg-red;
         box-shadow: 0px 0px 10px 0px #eaeaea;
 
@@ -105,32 +121,58 @@
             display: none;
           }
         }
+
+        &.active{
+          color: $bg-white;
+          background-color: $bg-red;
+
+          i{
+            display: block;
+          }
+        }
+
+        i{
+          display: none;
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translate(-50%);
+          font-size: 1.5rem;
+        }
       }
     }
 
-    .container{
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .content{
+      display: none;
 
-      .image,
-      .low-faculty{
-        width: 50%;
+      .container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        .image,
+        .low-faculty{
+          width: 50%;
+        }
+
+        .image{
+          padding: 50px;
+        }
+
+        h3{
+          margin-bottom: 30px;
+          color: $h3-title;
+        }
+
+        p{
+          margin-bottom: 50px;
+          font-size: 1.1rem;
+          color: #8b8b8a;
+        }
       }
 
-      .image{
-        padding: 50px;
-      }
-
-      h3{
-        margin-bottom: 30px;
-        color: $h3-title;
-      }
-
-      p{
-        margin-bottom: 50px;
-        font-size: 1.1rem;
-        color: #8b8b8a;
+      &.visible{
+        display: block;
       }
     }
   }

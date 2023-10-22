@@ -2,12 +2,14 @@
   export default {
     name: 'Courses',
 
-    props:{
-      bookImgSrc: String,
-      title: String,
-      paragraph: String,
-      buttonText: String,
-      illustration: String
+    data(){
+      return{
+        bookImgSrc: "src/assets/img/Books-icon.png",
+        title: "Thousands of courses for any type of student",
+        paragraph: "At EduPrime, it doesn't matter what domain you wish to poursue a career in. Here you can find a course that satisfies your needs within a click away and applies for a course in a matter of minutes. EduPrime is ranked as the most versatile university in the world, thanks to the number of courses it provides.",
+        buttonText: "Browse through courses",
+        illustration: "src/assets/img/Graduation-Illustration.png"
+      }
     }
   }
 </script>

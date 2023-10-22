@@ -1,6 +1,22 @@
 <script>
+  import timeline from '../../../data/main/timeline';
+  import coaching from '../../../data/main/coaching';
+
   export default {
-    name: 'UniversityYears'
+    name: 'UniversityYears',
+
+    data(){
+      return{
+        timeline,
+        coaching,
+        clockImgSrc: "src/assets/img/Clock-and-Bell.png",
+        title: "University Years",
+        timelineImgSrc: "src/assets/img/Timeline-Item.png",
+        calendarImgSrc: "/src/assets/img/upcoming-events-calendar-icon.png",
+        secondTitle: "Upcoming Events",
+        buttonText: "View All Events",
+        }
+    }
   }
 </script>
 
@@ -9,90 +25,48 @@
   
   <section class="university-years">
     <div class="clock">
-      <img src="../../../assets/img/Clock-and-Bell.png" alt="">
+      <img :src="clockImgSrc" alt="Clock">
     </div>
 
     <div class="title">
-      <h3>University Years</h3>
+      <h3>{{ title }}</h3>
     </div>
   
     <div class="container">
       <div class="image">
-        <img src="../../../assets/img/Timeline-Item.png" alt="">
+        <img :src="timelineImgSrc" alt="Timeline">
       </div>
 
-      <div class="demo-classes">
-        <h5>Demo Classes</h5>
+      <div :class="item.class" v-for="(item, index) in timeline" :key="index">
+        <h5>{{ item.title }}</h5>
 
-        <p>In the first week, students try to accommodate with the teaching style and choose their optional courses.</p>
-      </div>
-
-      <div class="graduation-day">
-        <h5>Graduation Day</h5>
-
-        <p>On the day of graduation, all students gather for the ceremony and then network and party among others.</p>
-      </div>
-
-      <div class="orientation">
-        <h5>Orientation</h5>
-
-        <p>First day of university year, all students gather fot the opening ceremony and then network with others.</p>
-      </div>
-
-      <div class="evaluation">
-        <h5>Evaluation</h5>
-
-        <p>At the end of a semester, students take a general evaluation test for every subject they're learning.</p>
+        <p>{{ item.paragraph }}</p>
       </div>
     </div>
 
     <div class="calendar">
-      <img src="../../../assets/img/upcoming-events-calendar-icon.png" alt="">
+      <img :src="calendarImgSrc" alt="Calendar">
     </div>
     
-    <h3>Upcoming Events</h3>
+    <h3>{{ secondTitle }}</h3>
 
     <div class="container">
       <div class="row">
-        <div class="col">
+        <div class="col" v-for="(item, index) in coaching" :key="index">
           <div class="card">
-            <h4>Coaching Sessions</h4>
+            <h4>{{ item.title }}</h4>
 
-            <span><i class="fa-regular fa-calendar-days"></i>20 May 21.30 PM</span>
+            <span><i :class="item.icon"></i>{{ item.day }}</span>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+            <p>{{ item.paragraph }}</p>
 
-            <button class="btn btn-red"><i class="fa-solid fa-plus"></i>Find More</button>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card">
-            <h4>Coaching Sessions</h4>
-
-            <span><i class="fa-regular fa-calendar-days"></i>20 May 21.30 PM</span>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-
-            <button class="btn btn-red"><i class="fa-solid fa-plus"></i>Find More</button>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card">
-            <h4>Coaching Sessions</h4>
-
-            <span><i class="fa-regular fa-calendar-days"></i>20 May 21.30 PM</span>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-
-            <button class="btn btn-red"><i class="fa-solid fa-plus"></i>Find More</button>
+            <button class="btn btn-red"><i :class="item.buttonIcon"></i>{{ item.buttonText }}</button>
           </div>
         </div>
       </div>
     </div>
 
-    <button class="btn btn-yellow">View All Events</button>
+    <button class="btn btn-yellow">{{ buttonText }}</button>
   </section>
   
   <div class="wave-last"></div>
@@ -103,13 +77,13 @@
 
   .wave{
     height: 95px;
-    background-image: url('../../assets/svg/svg-0.svg');
+    background-image: url('src/assets/svg/svg-0.svg');
     background-size: cover;
   }
 
   .wave-last{
     height: 100px;
-    background-image: url('../../assets/svg/svg-1.svg');
+    background-image: url('src/assets/svg/svg-1.svg');
     background-size: cover;
   }
 
