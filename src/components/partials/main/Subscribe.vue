@@ -1,19 +1,27 @@
 <script>
   export default {
-    name: 'Subscribe'
+    name: 'Subscribe',
+
+    data(){
+      return{
+        title: 'Subscribe Now To Our Newsletter',
+        email: 'Email address...',
+        icon: 'fa-solid fa-paper-plane'
+      }
+    }
   }
 </script>
 
 <template>
   <section class="subscribe">
     <div class="container">
-      <h3>Subscribe Now To Our Newsletter</h3>
+      <h3>{{ title }}</h3>
 
       <div class="email">
-        <input type="email" placeholder="Email address...">
+        <input type="email" :placeholder="email">
 
         <div class="send">
-          <i class="fa-solid fa-paper-plane"></i>
+          <i :class="icon"></i>
         </div>
       </div>
     </div>

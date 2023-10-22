@@ -1,6 +1,14 @@
 <script>
+  import partners from '../../../data/main/partners';
+
   export default {
-    name: 'Partners'
+    name: 'Partners',
+
+    data(){
+      return{
+        partners
+      }
+    }
   }
 </script>
 
@@ -12,36 +20,8 @@
       <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy.</p>
 
       <div class="row">
-        <div class="col">
-          <img src="../../../assets/img/partner-2.png" alt="">
-        </div>
-
-        <div class="col">
-          <img src="../../../assets/img/partner-3.png" alt="">
-        </div>
-
-        <div class="col">
-          <img src="../../../assets/img/partner-4.png" alt="">
-        </div>
-
-        <div class="col">
-          <img src="../../../assets/img/partner-5.png" alt="">
-        </div>
-
-        <div class="col">
-          <img src="../../../assets/img/partner-6.png" alt="">
-        </div>
-
-        <div class="col">
-          <img src="../../../assets/img/partner-8.png" alt="">
-        </div>
-
-        <div class="col">
-          <img src="../../../assets/img/partner-1.png" alt="">
-        </div>
-
-        <div class="col">
-          <img src="../../../assets/img/partner-7.png" alt="">
+        <div class="col" v-for="(item, index) in partners" :key="index">
+          <img :src="item.imgSrc" alt="Partners">
         </div>
       </div>
     </div>
@@ -79,6 +59,10 @@
       .col{
         padding: 10px;
         height: 70px;
+        
+        img{
+          opacity: .3;
+        }
       }
     }
   }
