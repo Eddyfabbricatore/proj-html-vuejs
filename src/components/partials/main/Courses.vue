@@ -1,6 +1,14 @@
 <script>
   export default {
-    name: 'Courses'
+    name: 'Courses',
+
+    props:{
+      bookImgSrc: String,
+      title: String,
+      paragraph: String,
+      buttonText: String,
+      illustration: String
+    }
   }
 </script>
 
@@ -10,18 +18,18 @@
       <div class="container">
         <div class="text">
           <div class="book">
-            <img src="../../../assets/img/Books-icon.png" alt="Book">
+            <img :src="bookImgSrc" alt="Book">
           </div>
 
-          <h2>Thousands of courses for any type of student</h2>
+          <h2>{{ title }}</h2>
 
-          <p>At EduPrime, it doesn't matter what domain you wish to poursue a career in. Here you can find a course that satisfies your needs within a click away and applies for a course in a matter of minutes. EduPrime is ranked as the most versatile university in the world, thanks to the number of courses it provides.</p>
+          <p>{{ paragraph }}</p>
 
-          <button class="btn btn-yellow">Browse through courses</button>
+          <button class="btn btn-yellow">{{ buttonText }}</button>
         </div>
 
         <div class="image">
-          <img src="../../../assets/img/Graduation-Illustration.png" alt="">
+          <img :src="illustration" alt="Illustration">
         </div>
       </div>
     </div>

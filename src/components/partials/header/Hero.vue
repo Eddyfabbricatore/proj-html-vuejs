@@ -7,6 +7,8 @@
       paragraph: String,
       buttonYellowText: String,
       buttonWhiteText: String,
+      search: String,
+      add: String
     }
   }
 </script>
@@ -27,9 +29,9 @@
       </div>
 
       <div class="btns">
-        <div class="btn btn-yellow"><i class="fa-solid fa-magnifying-glass"></i>{{ buttonYellowText }}</div>
+        <div class="btn btn-yellow"><i :class="search"></i>{{ buttonYellowText }}</div>
 
-        <div class="btn btn-white"><i class="fa-solid fa-user-plus"></i>{{ buttonWhiteText}}</div>
+        <div class="btn btn-white"><i :class="add"></i>{{ buttonWhiteText}}</div>
       </div>
     </div>
 

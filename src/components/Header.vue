@@ -26,7 +26,9 @@
       title="Key to your success"
       paragraph="EduPrime is the most versatile WorldPress theme for educational purposes, showcasing universities, curses, secondary scholls etc."
       buttonYellowText="Search Courses"
-      buttonWhiteText="Apply for university" />
+      buttonWhiteText="Apply for university"
+      search="fa-solid fa-magnifying-glass"
+      add="fa-solid fa-user-plus" />
   </header>
 </template>
 
