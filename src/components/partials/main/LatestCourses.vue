@@ -1,105 +1,56 @@
 <script>
+  import courses from '../../../data/main/courses';
+  import coursesMethod from '../../../data/main/coursesMethod';
+
   export default {
-    name: 'LatestCourses'
+    name: 'LatestCourses',
+
+    data(){
+      return{
+        courses,
+        coursesMethod,
+        title: 'Latest Courses',
+      }
+    }
   }
 </script>
 
 <template>
   <section class="latest-courses">
     <div class="container">
-      <h2>Latest Courses</h2>
+      <h2>{{ title }}</h2>
 
       <div class="row">
-        <div class="col">
+        <div class="col" v-for="(item, index) in courses" :key="index">
           <div class="card">
             <div class="image">
-              <img src="../../../assets/img/Decisions-icon.png" alt="">
+              <img :src="item.imgSrc" :alt="item.title">
             </div>
 
-            <h5>Make Better Decisions</h5>
+            <h5>{{ item.title }}</h5>
 
-            <p><i class="fa-regular fa-user"></i>Teacher: <span>James Collins</span></p>
+            <p><i :class="item.userIcon"></i>{{ item.role }}<span>{{ item.name }}</span></p>
 
-            <p><i class="fa-regular fa-money-bill-1"></i>Price: <span>$21.00</span></p>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card">
-            <div class="image">
-              <img src="../../../assets/img/Speaker-icon.png" alt="">
-            </div>
-
-            <h5>How to be a speakers</h5>
-
-            <p><i class="fa-regular fa-user"></i>Teacher: <span>James Collins</span></p>
-
-            <p><i class="fa-regular fa-money-bill-1"></i>Price: <span>Free</span></p>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card">
-            <div class="image">
-              <img src="../../../assets/img/Network-icon.png" alt="">
-            </div>
-
-            <h5>Network Introductions</h5>
-
-            <p><i class="fa-regular fa-user"></i>Teacher: <span>James Collins</span></p>
-
-            <p><i class="fa-regular fa-money-bill-1"></i>Price: <span>Free</span></p>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card">
-            <div class="image">
-              <img src="../../../assets/img/Brand-icon.png" alt="">
-            </div>
-
-            <h5>Brand management</h5>
-
-            <p><i class="fa-regular fa-user"></i>Teacher: <span>James Collins</span></p>
-
-            <p><i class="fa-regular fa-money-bill-1"></i>Price: <span>Free</span></p>
+            <p><i :class="item.moneyIcon"></i>{{ item.textPrice }}<span>{{ item.price }}</span></p>
           </div>
         </div>
       </div>
 
-      <div class="content">
+      <div class="content" v-for="(method, index) in coursesMethod" :key="index">
         <div class="text">
           <div class="image">
-            <img src="../../../assets/img/Exam-icon.png" alt="">
+            <img :src="method.examImgSrc" alt="Exam">
           </div>
 
-          <h2>The most efficient examination method</h2>
+          <h2>{{ method.title }}</h2>
 
-          <p>EduPrime has gathered teachers from around the globe to brainstorm in order to facilitate the evaluation of our students. Every teachers from our university has an influence on how students are evaluated at his/her subject.</p>
+          <p>{{ method.paragraph }}</p>
 
-          <button class="btn btn-red">Discover the Method</button>
+          <button class="btn btn-red">{{ method.buttonText }}</button>
         </div>
 
         <div class="img">
-          <img src="../../../assets/img/Exam-Illustration.png" alt="">
-        </div>
-      </div>
-
-      <div class="second-content">
-        <div class="img">
-          <img src="../../../assets/img/Girl-Illustration.png" alt="">
-        </div>
-
-        <div class="text">
-          <div class="image">
-            <img src="../../../assets/img/Exam-icon-1.png" alt="">
-          </div>
-
-          <h2>The most efficient examination method</h2>
-
-          <p>EduPrime has gathered teachers from around the globe to brainstorm in order to facilitate the evaluation of our students. Every teachers from our university has an influence on how students are evaluated at his/her subject.</p>
-
-          <button class="btn btn-red">List of Fees</button>
+          <img :src="method.imgSrc" alt="Illustration">
         </div>
       </div>
     </div>
@@ -160,13 +111,10 @@
     }
   }
 
-  .content,
-  .second-content{
+  .content{
     display: flex;
     width: 100%;
-  }
 
-  .content{
     .text,
     .img{
       width: 50%;
@@ -196,36 +144,9 @@
     .img{
       padding: 50px;
     }
-  }
 
-  .second-content{
-    .text,
-    .img{
-      width: 50%;
-    }
-
-    .img{
-      padding: 50px;
-    }
-
-    .text{
-      .image{
-        width: 70px;
-        height: 70px;
-      }
-
-      h2{
-        margin-top: 20px;
-      }
-
-      h2,
-      p{
-        margin-bottom: 40px;
-      }
-
-      p{
-        color: #434959;
-      }
+    &:last-of-type{
+      flex-direction: row-reverse;
     }
   }
 </style>
