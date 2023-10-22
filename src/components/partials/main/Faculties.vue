@@ -1,6 +1,14 @@
 <script>
+  import faculties from '../../../data/main/faculties';
+
   export default {
-    name: 'Faculties'
+    name: 'Faculties',
+
+    data(){
+      return{
+        faculties
+      }
+    }
   }
 </script>
 
@@ -13,42 +21,10 @@
     </div>
 
     <div class="row">
-      <div class="col">
+      <div class="col" v-for="(item, index) in faculties" :key="index">
+        <img :src="item.imgSrc" :alt="item.text">
 
-      </div>
-
-      <div class="col">
-        <img src="../../../assets/img/Gavel-v2.png" alt="Gavel">
-
-        <span>Low Facolty</span>
-      </div>
-
-      <div class="col">
-        <img src="../../../assets/img/Coins-tabs-v2.png" alt="Coins">
-
-        <span>Economy</span>
-      </div>
-
-      <div class="col">
-        <img src="../../../assets/img/Medicine-tabs-v2.png" alt="Medicine">
-
-        <span>Medicine</span>
-      </div>
-
-      <div class="col">
-        <img src="../../../assets/img/Computer-tabs-v2.png" alt="Medicine">
-
-        <span>Computer Science</span>
-      </div>
-
-      <div class="col">
-        <img src="../../../assets/img/Palette-tabs-v2.png" alt="Palette">
-
-        <span>Graphic Design</span>
-      </div>
-
-      <div class="col">
-        
+        <span>{{ item.text }}</span>
       </div>
     </div>
 
@@ -112,6 +88,13 @@
 
         img{
           margin-bottom: 10px;
+        }
+
+        &:first-of-type,
+        &:last-of-type{
+          img{
+            display: none;
+          }
         }
       }
     }

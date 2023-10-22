@@ -1,5 +1,5 @@
 <script>
-  import headerMenu from '../../../data/headerMenu';
+  import headerMenu from '../../../data/header/headerMenu';
 
   export default {
     name: 'Menu',
