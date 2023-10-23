@@ -21,17 +21,17 @@
       <h2>{{ title }}</h2>
 
       <div class="row">
-        <div class="col" v-for="(item, index) in courses" :key="index">
+        <div class="col" v-for="(course, index) in courses" :key="index">
           <div class="card">
             <div class="image">
-              <img :src="item.imgSrc" :alt="item.title">
+              <img :src="course.imgSrc" :alt="course.title">
             </div>
 
-            <h5>{{ item.title }}</h5>
+            <h5>{{ course.title }}</h5>
 
-            <p><i :class="item.userIcon"></i>{{ item.role }}<span>{{ item.name }}</span></p>
+            <p><i :class="course.userIcon"></i>{{ course.role }}<span>{{ course.name }}</span></p>
 
-            <p><i :class="item.moneyIcon"></i>{{ item.textPrice }}<span>{{ item.price }}</span></p>
+            <p><i :class="course.moneyIcon"></i>{{ course.textPrice }}<span>{{ course.price }}</span></p>
           </div>
         </div>
       </div>
@@ -39,14 +39,18 @@
       <div class="content" v-for="(method, index) in coursesMethod" :key="index">
         <div class="text">
           <div class="image">
-            <img :src="method.examImgSrc" alt="Exam">
+            <img :src="method.examImgSrc" :alt="method.title">
           </div>
 
           <h2>{{ method.title }}</h2>
 
           <p>{{ method.paragraph }}</p>
 
-          <button class="btn btn-red">{{ method.buttonText }}</button>
+          <div class="btns">
+            <button class="btn btn-red">{{ method.buttonText }}</button>
+
+            <button class="btn btn-yellow">{{ method.buttonText }}</button>
+          </div>
         </div>
 
         <div class="img">
@@ -91,13 +95,8 @@
           margin-bottom: 15px;
         }
 
-        h5{
-          font-size: 1.1rem;
-          color: #223441
-        }
-
         p{
-          color: #8b8b8a;
+          color: #70727e;
         }
 
         i{
@@ -135,9 +134,8 @@
         margin-top: 20px;
       }
 
-      p{
-        font-size: 1.1rem;
-        color: #434959;
+      .btn-yellow{
+        display: none;
       }
     }
     
@@ -147,6 +145,16 @@
 
     &:last-of-type{
       flex-direction: row-reverse;
+
+      .btns:hover{
+        .btn-red{
+          display: none;
+        }
+
+        .btn-yellow{
+          display: block;
+        }
+      }
     }
   }
 </style>

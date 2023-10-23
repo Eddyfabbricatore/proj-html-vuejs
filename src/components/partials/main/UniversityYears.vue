@@ -1,14 +1,17 @@
 <script>
   import timeline from '../../../data/main/timeline';
-  import coaching from '../../../data/main/coaching';
+  import Coachings from './partials/Coachings.vue';
 
   export default {
     name: 'UniversityYears',
 
+    components:{
+      Coachings
+    },
+
     data(){
       return{
         timeline,
-        coaching,
         clockImgSrc: "src/assets/img/Clock-and-Bell.png",
         title: "University Years",
         timelineImgSrc: "src/assets/img/Timeline-Item.png",
@@ -52,21 +55,15 @@
 
     <div class="container">
       <div class="row">
-        <div class="col" v-for="(item, index) in coaching" :key="index">
-          <div class="card">
-            <h4>{{ item.title }}</h4>
-
-            <span><i :class="item.icon"></i>{{ item.day }}</span>
-
-            <p>{{ item.paragraph }}</p>
-
-            <button class="btn btn-red"><i :class="item.buttonIcon"></i>{{ item.buttonText }}</button>
-          </div>
-        </div>
+        <Coachings />
       </div>
     </div>
 
-    <button class="btn btn-yellow">{{ buttonText }}</button>
+    <div class="btns">
+      <button class="btn btn-yellow">{{ buttonText }}</button>
+
+      <button class="btn btn-red">{{ buttonText }}</button>
+    </div>
   </section>
   
   <div class="wave-last"></div>
@@ -121,42 +118,41 @@
 
       h5{
         margin-bottom: 20px;
-        font-size: 1rem;
         color: #fff;
       }
 
       p{
         width: 360px;
-        color: #fffffffc;
+        color: #ffffffcc;
       }
 
       .demo-classes{
         position: absolute;
-        top: -90px;
+        top: -115px;
         right: 535px;
       }
 
       .graduation-day{
         position: absolute;
-        top: -90px;
+        top: -115px;
         right: 50px;
       }
 
       .orientation{
         position: absolute;
-        bottom: -85px;
+        bottom: -115px;
         left: 50px;
       }
 
       .evaluation{
         position: absolute;
-        bottom: -85px;
+        bottom: -115px;
         left: 540px;
       }
     }
 
     .calendar{
-      margin-top: 140px;
+      margin-top: 160px;
       margin-bottom: 20px;
     }
 
@@ -167,53 +163,26 @@
     .row{
       display: flex;
       margin-bottom: 60px;
+    }
+   
+    .btns{
+      margin-bottom: 50px;
 
-      .col{
-        padding: 20px;
-        width: calc(100% / 3);
+      .btn-red{
+        display: none;
+        background-color: $bg-red;
+        box-shadow: 0px 0px 1px 0px #000;
+      }
 
-        .card{
-          position: relative;
-          border-radius: 10px;
-          padding: 20px 40px;
-          text-align: center;
-          background-color: #fff;
+      &:hover{
+        .btn-yellow{
+          display: none;
+        }
 
-          h4{
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-            color: #3d404f;
-          }
-
-          span,
-          p{
-            color: #7f7f7f;
-          }
-
-          i{
-            margin-right: 5px;
-          }
-
-          p{
-            margin-top: 15px;
-            margin-bottom: 30px;
-            width: 100%;
-          }
-
-          .btn{
-            position: absolute;
-            bottom: -36px;
-            left: 50%;
-            padding: 20px 25px;
-            transform: translate(-50%);
-            box-shadow: 0px 1px 3px #000;
-          }
+        .btn-red{
+          display: block;
         }
       }
-    }
-
-    .btn-yellow{
-      margin-bottom: 50px;
     }
   }
 </style>

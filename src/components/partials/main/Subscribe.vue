@@ -32,8 +32,8 @@
   @use '../../../scss/variables.scss' as *;
   
   .subscribe{
-    background-color: $bg-red;
     padding: 50px 0;
+    background-color: $bg-red;
 
     .container{
       display: flex;
@@ -57,6 +57,7 @@
           right: 0;
           border-radius: 50%;
           padding: 26px;
+          cursor: pointer;
           background-color: $bg-yellow;
 
           i{

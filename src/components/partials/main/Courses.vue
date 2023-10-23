@@ -27,7 +27,11 @@
 
           <p>{{ paragraph }}</p>
 
-          <button class="btn btn-yellow">{{ buttonText }}</button>
+          <div class="btns">
+            <button class="btn btn-yellow">{{ buttonText }}</button>
+
+            <button class="btn btn-red">{{ buttonText }}</button>
+          </div>
         </div>
 
         <div class="image">
@@ -55,17 +59,14 @@
         height: 100%;
 
         .text{
-          width: 50%;
-        }
-
-        .text{
           margin-top: 50px;
           padding: 0 50px;
+          width: 50%;
 
           .book{
+            margin-bottom: 20px;
             width: 70px;
             height: 70px;
-            margin-bottom: 20px;
           }
 
           h2,
@@ -73,17 +74,26 @@
             margin-bottom: 30px;
           }
 
-          p{
-            font-size: 1.1rem;
-            color: #434959;
+          .btn-red{
+            display: none;
+          }
+
+          .btns:hover{
+            .btn-yellow{
+              display: none;
+            }
+
+            .btn-red{
+              display: block;
+            }
           }
         }
 
         .image{
-          width: 480px;
-          height: 330px;
           margin-top: 150px;
           margin-left: 30px;
+          width: 480px;
+          height: 330px;
         }
       }
     }

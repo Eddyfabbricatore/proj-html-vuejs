@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+h1{
+  font-size: $h1-size;
+  color: $bg-white;
+}
+
 h2{
   font-size: $h2-size;
   color: $h2-title;
@@ -14,6 +19,21 @@ h2{
 h3{
   font-size: $h3-size;
   color: $bg-white;
+}
+
+h4{
+  font-size: $h4-size;
+  color: $h2-title;
+}
+
+h5{
+  font-size: $h5-size;
+  color: $h5-title;
+}
+
+p{
+  font-size: $p-size;
+  color: $p-color;
 }
 
 img{
@@ -28,6 +48,7 @@ ul{
 
 a{
   text-decoration: none;
+  color: $bg-white;
 }
 
 .container{

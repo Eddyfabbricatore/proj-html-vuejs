@@ -1,6 +1,30 @@
 <script>
+  import eduPrime from '../data/footer/eduPrime';
+  import network from '../data/footer/network';
+  import categories from '../data/footer/categories';
+  import themes from '../data/footer/themes';
+
   export default {
-    name: 'Footer'
+    name: 'Footer',
+
+    data(){
+      return{
+        eduPrime,
+        network,
+        categories,
+        themes,
+        imgSrc: 'src/assets/img/theme_eduprime_logo.png',
+        paragraph: 'EduPrime is the most versatile WorldPress theme for educational purposes, showcasing universities, courses, secondary scholl etc.',
+        icons: ['fa-brands fa-facebook-f', 'fa-brands fa-twitter', 'fa-brands fa-instagram'],
+        firstTitle: 'Get EduPrime',
+        secondTitle: 'Networking',
+        searchText: 'Search...',
+        searchIcon: 'fa-solid fa-magnifying-glass',
+        thirdTitle: 'Search Categories',
+        rights: 'ModelTheme. All rights reserved',
+        back: 'src/assets/img/back-to-top-arrow.svg'
+      }
+    }
   }
 </script>
 
@@ -10,103 +34,79 @@
       <div class="row">
         <div class="col">
           <div class="logo">
-            <img src="../assets/img/theme_eduprime_logo.png" alt="">
+            <img :src="imgSrc" alt="Logo EduPrime">
           </div>
 
-          <p>EduPrime is the most versatile WorldPress theme for educational purposes, showcasing universities, courses, secondary scholl etc.</p>
+          <p>{{ paragraph }}</p>
 
           <div class="social">
-            <i class="fa-brands fa-facebook-f"></i>
-
-            <i class="fa-brands fa-twitter"></i>
-
-            <i class="fa-brands fa-instagram"></i>
+            <i :class="icon" v-for="(icon, index) in icons" :key="index"></i>
           </div>
         </div>
 
         <div class="col">
-          <h5>Get EduPrime</h5>
-
-          <span>Request a web site</span>
-
-          <span>Browse Themes</span>
-
-          <span>Payment options</span>
-
-          <span>Support System</span>
-
-          <span>Checkout</span>
-
-          <span>Purchase Theme</span>
+          <h5>{{ firstTitle }}</h5>
+          
+          <nav>
+            <ul>
+              <li v-for="(textEdu, index) in eduPrime" :key="index">
+                <a href="#">{{ textEdu.text }}</a>
+              </li>
+            </ul>
+          </nav>
         </div>
 
         <div class="col">
-          <h5>Networking</h5>
+          <h5>{{ secondTitle }}</h5>
 
-          <span>Purchase Theme</span>
-
-          <span>Our Benefits</span>
-
-          <span>Our Team</span>
-
-          <span>Our Services</span>
-
-          <span>Others Products</span>
-
-          <span>My account</span>
+          <nav>
+            <ul>
+              <li v-for="(textNet, index) in network" :key="index">
+                <a href="#">{{ textNet.text }}</a>
+              </li>
+            </ul>
+          </nav>
         </div>
 
         <div class="col">
           <div class="search">
-            <input type="email" placeholder="Search...">
+            <input type="email" :placeholder="searchText">
 
-            <div class="send"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <div class="send">
+              <i :class="searchIcon"></i>
+            </div>
           </div>
 
-          <h5>Search Categories</h5>
+          <h5>{{ thirdTitle }}</h5>
 
           <div class="category">
-            <span>Economy</span>
-
-            <span>Design</span>
-
-            <span>Coaching</span>
-
-            <span>Business</span>
-
-            <span>Medicine</span>
-
-            <span>Law</span>
-
-            <span>Fitness</span>
+            <nav>
+              <ul>
+                <li v-for="(category, index) in categories" :key="index">
+                  <a href="#">{{ category.text }}</a>
+                </li>
+              </ul>
+            </nav>
           </div>
 
-          <p>ModelTheme. All rights reserved</p>
+          <p>{{ rights }}</p>
         </div>
       </div>
     </div>
 
     <div class="theme">
-      <div class="purchase">
+      <div :class="theme.class" v-for="(theme, index) in themes" :key="index">
         <div class="img">
-          <img src="../assets/svg/svg-3.svg" alt="">
+          <img :src="theme.imgSrc" :alt="theme.name">
         </div>
 
-        <span>Purchase Theme</span>
-      </div>
-
-      <div class="related">
-        <div class="img">
-          <img src="../assets/svg/svg-2.svg" alt="">
-        </div>
-
-        <span>Related Theme</span>
+        <span>{{ theme.name }}</span>
       </div>
     </div>
 
     <div class="back">
-      <a href="#top">
-        <img src="../assets/img/back-to-top-arrow.svg" alt="">
+      <a href="#start">
+        <img :src="back" alt="Start">
       </a>
     </div>
   </footer>
@@ -153,21 +153,23 @@
               border-radius: 50%;
               margin-right: 15px;
               padding: 20px;
+              cursor: pointer;
               color: $bg-white;
             }
           }
 
           p,
-          span{
+          li{
             color: #ffffffcc;
           }
 
-          span{
+          li{
             margin-bottom: 20px;
           }
 
           .search{
             position: relative;
+            cursor: pointer;
 
             input{
               border: none;
@@ -192,16 +194,18 @@
             align-items: end;
 
             .category{
-              display: flex;
-              justify-content: end;
-              flex-wrap: wrap;
+              ul{
+                display: flex;
+                justify-content: end;
+                flex-wrap: wrap;
 
-              span{
-                border: 1px solid #ffffffcc;
-                border-radius: 20px;
-                margin-left: 5px;
-                padding: 10px;
-                font-size: .8rem;
+                li{
+                  border: 1px solid #ffffffcc;
+                  border-radius: 20px;
+                  margin-left: 8px;
+                  padding: 10px 5px;
+                  font-size: .8rem;
+                }
               }
             }
 
@@ -227,6 +231,7 @@
         border-radius: 5px;
         width: 100%;
         height: 40px;
+        cursor: pointer;
         color: $color-theme;
         background-color: $bg-theme;
 

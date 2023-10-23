@@ -20,8 +20,8 @@
       <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy.</p>
 
       <div class="row">
-        <div class="col" v-for="(item, index) in partners" :key="index">
-          <img :src="item.imgSrc" alt="Partners">
+        <div class="col" v-for="(partner, index) in partners" :key="index">
+          <img :src="partner.imgSrc" alt="Partners">
         </div>
       </div>
     </div>
@@ -46,7 +46,7 @@
     p{
       width: 450px;
       text-align: center;
-      color: #434959;
+      color: #3d404f;
     }
 
     .row{
@@ -62,6 +62,11 @@
         
         img{
           opacity: .3;
+          cursor: pointer;
+
+          &:hover{
+            opacity: 1;
+          }
         }
       }
     }

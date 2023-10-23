@@ -20,17 +20,23 @@
   <div class="menu">
     <nav>
       <ul>
-        <li v-for="(item, index) in headerMenu" :key="index">
-          <a href="#">{{ item.text }} <i :class="item.icon"></i></a>
+        <li v-for="(link, index) in headerMenu" :key="index">
+          <a href="#">{{ link.text }} <i :class="link.icon"></i></a>
         </li>
       </ul>
     </nav>
 
-    <button class="btn btn-yellow">{{ buttonText }}</button>
+    <div class="btns">
+      <button class="btn btn-yellow">{{ buttonText }}</button>
+
+      <button class="btn btn-white">{{ buttonText }}</button>
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+  @use '../../../scss/variables.scss' as *;
+
   .menu{
     display: flex;
     align-items: center;
@@ -42,7 +48,6 @@
         margin-right: 40px;
 
         a{
-          color: #fff;
           display: flex;
 
           i{
@@ -51,9 +56,23 @@
           }
 
           &:hover{
-            color: #e9d758
+            color: $bg-yellow;
           }
         }
+      }
+    }
+
+    .btn-white{
+      display: none;
+    }
+
+    .btns:hover{
+      .btn-yellow{
+        display: none;
+      }
+
+      .btn-white{
+        display: block;
       }
     }
   }
